@@ -44,6 +44,13 @@ public class InThread2 extends Thread{
 		System.out.println(vector);
 		System.out.println("\nV3\n\n\n");
 		System.out.println(v3);
+		for (int i=0;i<v3.size();i++)
+		{
+			String a="";
+			a=v3.elementAt(i);
+			System.out.print(Tree.search(a));
+		
+		}
 	}
 	
 }

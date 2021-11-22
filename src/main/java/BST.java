@@ -1,115 +1,79 @@
 public class BST {
- 
-    private String data;
-    private BST left;
-    private BST right;
- 
-    public BST() {
-        this.data = null;
-        this.left = null;
-        this.right = null;
-    }
-     
-    public BST(String data) {
-        this.data = data;
-        this.left = null;
-        this.right = null;
-    }
- 
-    public static BST createTree( String content ) {
-        BST bstree = new BST();
-        if( content != null ) {
-            //
-            // Remove the punctuation from the content
-            //
-            content = content.replaceAll("(\\w+)\\p{Punct}(\\s|$)", "$1$2");
-            String[] words = content.split( " " );
-            bstree = new BST();
-            for( int i = 0; i < words.length; i++ ) {
-                bstree.addNode( words[i]);
-            }
-        }
-        return bstree;
-    }
- 
-     
-    // As a convention, if the key to be inserted is less than the key of root
-    // node, then key is inserted in
-    // left sub-tree; If key is greater, it is inserted in right sub-tree. If it
-    // is equal, as a convention, it
-    // is inserted in right sub-tree
-    public void addNode(String data) {
-        if (this.data == null) {
+
+    public class Node {
+        //instance variable of Node class
+        public String data;
+        public Node left;
+        public Node right;
+
+        //constructor
+        public Node(String data) {
             this.data = data;
-        } else {
-            if (this.data.compareTo(data) > 0) {
-                if (this.left != null) {
-                    this.left.addNode(data);
-                } else {
-                    this.left = new BST(data);
-                }
- 
-            } else {
-                if (this.right != null) {
-                    this.right.addNode(data);
-                } else {
-                    this.right = new BST(data);
-                }
- 
-            }
+            this.left = null;
+            this.right = null;
         }
-    }
-     
-    public void traversePreOrder() {
-        System.out.println(this.data);
-        if (this.left != null) {
-            this.left.traversePreOrder();
-        }
-        if (this.right != null) {
-            this.right.traversePreOrder();
-        }
-    }
- 
-    public void traverseInOrder() {
-        if (this.left != null) {
-            this.left.traverseInOrder();
-        }
-        System.out.println(this.data);
-        if (this.right != null) {
-            this.right.traverseInOrder();
-        }
-    }
- 
- 
-    public void traversePostOrder() {
-        if (this.left != null) {
-            this.left.traversePostOrder();
-        }
-        if (this.right != null) {
-            this.right.traversePostOrder();
-        }
-        System.out.println(this.data);
     }
     
-    public boolean search(String data) {
-        return search(this, data);
+    // instance variable
+    public Node root;
+
+    // constructor for initialize the root to null BYDEFAULT
+    public BST() {
+        this.root = null;
     }
 
-    private boolean search(BST root, String data) {
+    // insert method to insert the new Date
+    public void addNode(String newData) {
+        this.root = insert(root, newData);
+    }
+
+    public Node insert(Node root, String newData) {
+        // Base Case: root is null or not
+        if (root == null) {
+            // Insert the new data, if root is null.
+            root = new Node(newData);
+            // return the current root to his sub tree
+            return root;
+        }
+        // Here checking for root data is greater or equal to newData or not
+        else if (root.data.compareTo(newData)<0) {
+            // if current root data is greater than the new data then now process the left sub-tree
+            root.left = insert(root.left, newData);
+        } else {
+            // if current root data is less than the new data then now process the right sub-tree
+            root.right = insert(root.right, newData);
+        }
+        return root;
+    }
+
+    // method for search the data , is data is present or not in the tree ?
+    public boolean search(String data) {
+        return search(this.root, data);
+    }
+
+    private boolean search(Node root, String data) {
         if (root == null) {
             return false;
-        }
-        if(this.data.equalsIgnoreCase(data))
-        	return true;
-         else if (this.data.compareTo(data) < 0) {
+        } else if (root.data.compareTo(data)==0) {
+            return true;
+        } else if (root.data.compareTo(data)<0) {
             return search(root.left, data);
         }
-        else if (this.data.compareTo(data) > 0) {
-            return search(root.right, data);
-        }
-        else
-        	return true;
-      
+        return search(root.right, data);
     }
- 
+
+    //Traversal
+    public void preorder() {
+        preorder(root);
+        System.out.println();
+    }
+
+    public void preorder(Node root) {
+        if (root == null) {
+            return;
+        }
+        System.out.print(root.data + "\n");
+        preorder(root.left);
+        preorder(root.right);
+    }
 }

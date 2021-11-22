@@ -43,7 +43,6 @@ public class InThread1 extends Thread {
 		System.out.println(vector);
 		System.out.println("\nV2\n\n\n");
 		System.out.println(v2);
-		System.out.print(Tree.search("cap")+"\n\n");
 		for (int i=0;i<v2.size();i++)
 		{
 			String a="";

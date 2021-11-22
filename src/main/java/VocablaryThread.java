@@ -35,7 +35,7 @@ class VocablaryThread extends Thread {
 			e.printStackTrace();
 		}
 	
-		Tree.traversePreOrder();
+		Tree.preorder();
 		
 	}
 	
