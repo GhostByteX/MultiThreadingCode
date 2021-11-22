@@ -35,8 +35,13 @@ class VocablaryThread extends Thread {
 			e.printStackTrace();
 		}
 	
-		Tree.preorder();
 		
+		
+	}
+	
+	public void display(BST Tree)
+	{
+		Tree.preorder();
 	}
 	
 	
