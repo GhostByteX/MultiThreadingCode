@@ -81,4 +81,11 @@ public class InThread1 extends Thread {
             " - "+entry.getValue());
 		}
 	}
+	
+	public boolean search(String a)
+	{
+		if(v2.contains(a))
+			return true;
+		return false;
+	}
 }

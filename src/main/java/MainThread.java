@@ -39,7 +39,22 @@ public class MainThread extends Thread {
 			t3.displaymap();
 			break;
 		case 4:
-			System.out.print("Yet to be Implemented\n");
+			String query="";
+			System.out.print("Enter the Word you want to Search\n\n");
+			query+=kb.next();
+			
+			if(t2.search(query))
+			{
+				System.out.print("\nFound in InputFile1\n\n");
+			}
+			
+			if(t3.search(query))
+			{
+				System.out.print("\nFound in InputFile2\n\n");
+			}
+			else
+				System.out.print("\nNot found in an files\n\n");
+
 			break;
 		case 5:
 			return;
