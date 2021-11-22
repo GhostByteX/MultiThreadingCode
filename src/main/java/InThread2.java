@@ -22,7 +22,7 @@ public class InThread2 extends Thread{
 	{
 		System.out.println("Thread 3 is Running\n\n");
 		
-		String Path="C:\\Users\\usman\\OneDrive\\Desktop\\file2.txt";
+		String Path="E:\\repository4\\file2.txt";
 		String Line="";
 		try {
 			BufferedReader bufr=new BufferedReader(new FileReader(Path));

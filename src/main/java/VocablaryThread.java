@@ -17,7 +17,7 @@ class VocablaryThread extends Thread {
 	{
 		System.out.println("Thread 1 is Running\n\n");
 		//BST Tree = new BST();
-		String Path="C:\\Users\\usman\\OneDrive\\Desktop\\vocab.txt";
+		String Path="E:\\repository4\\vocab.txt";
 		String Line="";
 		try {
 			BufferedReader bufr=new BufferedReader(new FileReader(Path));

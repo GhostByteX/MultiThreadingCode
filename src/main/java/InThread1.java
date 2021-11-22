@@ -21,7 +21,7 @@ public class InThread1 extends Thread {
 	public void run(BST Tree)
 	{
 		System.out.println("Thread 2 is Running\n\n");
-		String Path="C:\\Users\\usman\\OneDrive\\Desktop\\file1.txt";
+		String Path="E:\\repository4\\file1.txt";
 		String Line="";
 		try {
 			BufferedReader bufr=new BufferedReader(new FileReader(Path));
